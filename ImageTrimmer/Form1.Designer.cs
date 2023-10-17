@@ -44,7 +44,7 @@
             panel1.Controls.Add(logo);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(188, 2000);
+            panel1.Size = new Size(1264, 103);
             panel1.TabIndex = 0;
             // 
             // logo
@@ -60,10 +60,10 @@
             // 
             // splitContainer1
             // 
-            splitContainer1.Location = new Point(194, 12);
+            splitContainer1.Location = new Point(12, 109);
             splitContainer1.Name = "splitContainer1";
-            splitContainer1.Size = new Size(1058, 657);
-            splitContainer1.SplitterDistance = 529;
+            splitContainer1.Size = new Size(1240, 560);
+            splitContainer1.SplitterDistance = 613;
             splitContainer1.TabIndex = 1;
             // 
             // ImageTrimmer
