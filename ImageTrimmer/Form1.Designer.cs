@@ -32,6 +32,9 @@
             panel1 = new Panel();
             logo = new PictureBox();
             splitContainer1 = new SplitContainer();
+            button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)logo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
@@ -41,6 +44,9 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(62, 92, 118);
+            panel1.Controls.Add(button3);
+            panel1.Controls.Add(button2);
+            panel1.Controls.Add(button1);
             panel1.Controls.Add(logo);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
@@ -66,6 +72,33 @@
             splitContainer1.SplitterDistance = 613;
             splitContainer1.TabIndex = 1;
             // 
+            // button1
+            // 
+            button1.Location = new Point(236, 34);
+            button1.Name = "button1";
+            button1.Size = new Size(172, 32);
+            button1.TabIndex = 1;
+            button1.Text = "Import";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(540, 34);
+            button2.Name = "button2";
+            button2.Size = new Size(172, 32);
+            button2.TabIndex = 2;
+            button2.Text = "Trim White Spaces";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(856, 34);
+            button3.Name = "button3";
+            button3.Size = new Size(172, 32);
+            button3.TabIndex = 3;
+            button3.Text = "Eksport";
+            button3.UseVisualStyleBackColor = true;
+            // 
             // ImageTrimmer
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -89,5 +122,8 @@
         private Panel panel1;
         private PictureBox logo;
         private SplitContainer splitContainer1;
+        private Button button3;
+        private Button button2;
+        private Button button1;
     }
 }
