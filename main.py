@@ -21,7 +21,7 @@ def create_folders(*folders):
 
 def trim_image(image):
     img = cv2.imread(image)
-    img = img[:-20, :-20]
+    img = img[:-30, :-30]
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     gray = 255 * (gray < 128).astype(np.uint8)
     gray = cv2.morphologyEx(gray, cv2.MORPH_OPEN, np.ones((4, 4), dtype=np.uint8))
@@ -44,7 +44,7 @@ def main():
     # Process each image in the import folder
     for file in os.listdir(import_path):
         if file.endswith('.jpg') or file.endswith('.png'):
-            print(f"{CYAN}Processing image:{RESET} {file}")
+            print(f"\n{CYAN}Processing image:{RESET} {file}")
             try:
                 # Copy the original image to the original folder
                 shutil.copy(os.path.join(import_path, file), os.path.join(original_path, file))
