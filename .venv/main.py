@@ -18,62 +18,19 @@ def create_folders(*folders):
         else:
             print(f"{YELLOW}Folder already exists:{RESET} {folder}")
 
-def get_contours(img):
-    # Convert the image to grayscale
-    imgray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-    # Threshold the image to get contours
-    ret, thresh = cv2.threshold(imgray, 150, 255, 0)
+def trim_image(image):
+    img = cv2.imread(image)
+    img = img[:-20, :-20]
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    gray = 255 * (gray < 128).astype(np.uint8)
+    gray = cv2.morphologyEx(gray, cv2.MORPH_OPEN, np.ones((4, 4), dtype=np.uint8))
+    coords = cv2.findNonZero(gray)
+    x, y, w, h = cv2.boundingRect(coords)
+    rect = img[y:y + h, x:x + w]
 
-    # Find contours in the thresholded image
-    contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    return rect
 
-    # Filter contours based on size
-    size = get_size(img)
-    contours = [cc for cc in contours if contourOK(cc, size)]
-    return contours
-
-def get_size(img):
-    ih, iw = img.shape[:2]
-    return iw * ih
-
-def contourOK(cc, size=1000000):
-    x, y, w, h = cv2.boundingRect(cc)
-    # Reject contours that are too small or too large
-    if w < 50 or h < 50:
-        return False
-    area = cv2.contourArea(cc)
-    return 200 < area < (size * 0.5)
-
-def find_boundaries(img, contours):
-    # Initialize boundary variables
-    minx, miny, maxx, maxy = img.shape[1], img.shape[0], 0, 0
-
-    # Update boundaries based on contour bounding boxes
-    for cc in contours:
-        x, y, w, h = cv2.boundingRect(cc)
-        minx = min(minx, x)
-        miny = min(miny, y)
-        maxx = max(maxx, x + w)
-        maxy = max(maxy, y + h)
-
-    return minx, miny, maxx, maxy
-
-def crop(img, boundaries):
-    minx, miny, maxx, maxy = boundaries
-    return img[miny:maxy, minx:maxx]
-
-def trim_image(file_path):
-    img = cv2.imread(file_path)
-    contours = get_contours(img)
-    bounds = find_boundaries(img, contours)
-    cropped = crop(img, bounds)
-
-    # Check if the cropped image is too small
-    if get_size(cropped) < 400:
-        return None
-
-    return cropped
 
 def main():
     # Define folder paths
