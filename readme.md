@@ -3,7 +3,7 @@
 
 Small program written in Python that aims to trim white spaces out of images.
 
-Need for this progam came from scanning a *lot* of family pictures. Due to the old photos random format the scanner area doesn't always match and You're left with white border around the image. There are different ways to achive this, like [Photoshop's automation](https://www.photoshopessentials.com/photo-editing/crop-straighten/) or [ImageMagic script](https://stackoverflow.com/questions/44655961/autotrim-white-border-from-scanned-image-with-imagemagick).
+Need for this progam came from scanning a *lot* of family pictures. Due to the old photos' seemingly random aspect ration the scanner area doesn't always match and You're left with white border around the image. There are already different ways to achive this, like [Photoshop's automation](https://www.photoshopessentials.com/photo-editing/crop-straighten/) or [ImageMagic script](https://stackoverflow.com/questions/44655961/autotrim-white-border-from-scanned-image-with-imagemagick).
 
 ## Deployment
 1. Clone the repo via `git clone https://github.com/Shadoweee77/ImageTrimmer.git`
